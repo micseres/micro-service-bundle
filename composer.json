@@ -23,7 +23,7 @@
         "micseres/micro-service-reactor": "dev-master"
 
     },
-        "require-dev": {
+    "require-dev": {
         "phpunit/phpunit": "^7.2"
     },
     "autoload": {
