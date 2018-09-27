@@ -28,12 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Micseres\\MicroServiceBundle\\": ""
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Micseres\\MicroServiceBundle\\Tests\\": "Tests"
+            "Micseres\\MicroServiceBundle\\": "src"
         }
     },
     "extra": {
