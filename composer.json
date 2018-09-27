@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Micseres\\MicroServiceBundle\\": "src"
+            "Micseres\\MicroServiceBundle\\": "src/"
         }
     },
     "extra": {
