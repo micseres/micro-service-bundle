@@ -20,7 +20,8 @@
         "ext-json": "*",
         "symfony/dependency-injection": ">=4.0",
         "symfony/http-kernel": "^4.1",
-        "micseres/micro-service-reactor": "dev-master"
+        "micseres/micro-service-reactor": "dev-master",
+        "symfony/config": "^4.1"
 
     },
     "require-dev": {

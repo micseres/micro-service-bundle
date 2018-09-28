@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('default_connection')->defaultValue('default')->end()
                 ->arrayNode('connections')
                     ->prototype('array')
                         ->children()

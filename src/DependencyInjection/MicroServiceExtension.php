@@ -9,6 +9,8 @@
 namespace Micseres\MicroServiceBundle\DependencyInjection;
 
 use Micseres\MicroServiceReactor\MicroServiceReactor;
+use Micseres\MicroServiceReactor\MicroServiceReactorInterface;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
@@ -26,7 +28,10 @@ class MicroServiceExtension extends Extension
     {
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
-
+        $default = $config['default_connection'];
+        if (!array_key_exists($default, array_keys($config['connections']))) {
+            throw new InvalidConfigurationException("connection '{$default}' not found and cannot be set as default");
+        }
         foreach ($config['connections'] as $key => $connection) {
             $container->register("m_service.{$key}_reactor", MicroServiceReactor::class)
                 ->addArgument($connection['ip'])
@@ -36,5 +41,6 @@ class MicroServiceExtension extends Extension
                 ->addArgument($connection['algorithm'])
                 ->setPublic(true);
         }
+        $container->addAliases([MicroServiceReactorInterface::class => "m_service.{$default}_reactor"]);
     }
 }
